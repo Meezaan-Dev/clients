@@ -1,5 +1,5 @@
 ---
-import products from "@/data/products.json"
+import site from "@/data/site.json"
 import type { Product } from "@/types/product"
 ---
 
@@ -16,7 +16,7 @@ import type { Product } from "@/types/product"
     />
 
     <ul id="search-results" class="mt-4 space-y-2">
-      {(products as Product[]).map(product => (
+      {(site.products as Product[]).map(product => (
         <li class="hidden">
           <a
             href={`/products/${product.slug}`}

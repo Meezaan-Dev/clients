@@ -1,19 +1,18 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import products from "@/data/products.json";
-import categories from "@/data/categories.json";
+import site from "@/data/site.json";
 import type { Product } from "@/types/product";
 import type { Category } from "@/types/category";
 
 export function getStaticPaths() {
-  return (categories as Category[]).map((cat) => ({
+  return (site.categories as Category[]).map((cat) => ({
     params: { slug: cat.slug },
   }));
 }
 
 const { slug } = Astro.params;
 
-const filtered = (products as Product[]).filter((p) => p.category === slug);
+const filtered = (site.products as Product[]).filter((p) => p.category === slug);
 ---
 
 <BaseLayout>

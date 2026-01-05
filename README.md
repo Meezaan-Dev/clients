@@ -20,7 +20,7 @@ Designed to act as a base for multiple similar sites (for example different coun
 ```
 src/
 ├── components/     # Reusable UI components
-├── data/           # JSON data (site, products, categories)
+├── data/           # Website configurable data
 ├── layouts/        # Base layout
 ├── pages/          # Site pages and routes
 ├── styles/         # Global CSS (Tailwind)

@@ -1,5 +1,5 @@
 ---
-import categories from "@/data/categories.json"
+import site from "@/data/site.json"
 import type { Category } from "@/types/category"
 ---
 
@@ -8,7 +8,7 @@ import type { Category } from "@/types/category"
     <h2 class="text-2xl font-semibold mb-6">Categories</h2>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {(categories as Category[]).map(cat => (
+      {(site.categories as Category[]).map(cat => (
         <a
           href={`/categories/${cat.slug}`}
           class="rounded border p-4 text-center hover:border-black"

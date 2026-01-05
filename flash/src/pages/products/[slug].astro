@@ -1,17 +1,17 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import products from "@/data/products.json";
+import site from "@/data/site.json";
 import type { Product } from "@/types/product";
 
 export function getStaticPaths() {
-  return (products as Product[]).map((p) => ({
+  return (site.products as Product[]).map((p) => ({
     params: { slug: p.slug },
   }));
 }
 
 const { slug } = Astro.params;
 
-const product = (products as Product[]).find((p) => p.slug === slug);
+const product = (site.products as Product[]).find((p) => p.slug === slug);
 
 if (!product) {
   throw new Error(`Product not found: ${slug}`);
@@ -40,9 +40,9 @@ if (!product) {
           {product.description}
         </p>
 
-        <p class="mt-6 text-2xl font-semibold">
+        <!-- <p class="mt-6 text-2xl font-semibold">
           R {product.price}
-        </p>
+        </p> -->
 
         <div class="mt-8 flex gap-4">
           <button

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import products from "@/data/products.json";
+import site from "@/data/site.json";
 import ProductGrid from "@/components/product/ProductGrid.astro";
 ---
 
@@ -15,7 +15,7 @@ import ProductGrid from "@/components/product/ProductGrid.astro";
         </p>
       </header>
 
-      <ProductGrid products={products} />
+      <ProductGrid products={site.products} />
     </div>
   </section>
 </BaseLayout>
