@@ -1,0 +1,28 @@
+---
+import site from "@/data/site.json";
+import type { ProcessStep } from "@/types/site";
+
+const steps = site.process as ProcessStep[];
+---
+
+<section id="how-it-works" class="process-section journey-section">
+  <div class="shell overview-layout">
+    <div data-reveal>
+      <p class="section-kicker"><span>03</span> How we do it</p>
+      <h2>A straightforward way to get the job done.</h2>
+      <p>Clear communication from the first enquiry through to installation or repair.</p>
+    </div>
+
+    <ol class="process-list">
+      {steps.map((step, index) => (
+        <li class="process-step" data-reveal style={`--reveal-delay: ${index * 80}ms`}>
+          <span class="process-number">0{index + 1}</span>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

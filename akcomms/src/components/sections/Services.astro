@@ -1,0 +1,37 @@
+---
+import site from "@/data/site.json";
+import type { Service } from "@/types/site";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon.astro";
+
+const services = site.services as Service[];
+---
+
+<section id="services" class="simple-section journey-section">
+  <div class="shell">
+    <div class="section-heading" data-reveal>
+      <p class="section-kicker"><span>02</span> Our services</p>
+      <h2>Services for better connectivity, control and security.</h2>
+      <p>Installation, extension, relocation and repair services across the systems you depend on.</p>
+    </div>
+
+    <div class="service-grid">
+      {services.map((service, index) => (
+        <article class="service-item" data-reveal style={`--reveal-delay: ${Math.min(index * 70, 210)}ms`}>
+          <div class="service-icon">
+            {service.key === "wifi" && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5a12 12 0 0 1 16 0M7 13a7.5 7.5 0 0 1 10 0M10 16.5a3 3 0 0 1 4 0M12 20h.01" /></svg>}
+            {service.key === "cctv" && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 14-2 2 9-14 2-2-9Zm13 8 2 4M15 19h6M6 16l-2 3" /><circle cx="15.5" cy="9.5" r="2.5" /></svg>}
+            {service.key === "fibre" && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v5a3 3 0 0 0 3 3h8a3 3 0 0 1 3 3v5M2 4h6M16 20h6" /><circle cx="12" cy="12" r="2" /></svg>}
+            {service.key === "smart-home" && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-7 9 7v9H3v-9Z" /><path d="M8 14a6 6 0 0 1 8 0M10.5 16.5a2.3 2.3 0 0 1 3 0M12 19h.01" /></svg>}
+            {service.key === "equipment" && <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M7 9h.01M11 9h.01M15 9h2M7 14h10" /></svg>}
+          </div>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+          <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+            <WhatsAppIcon class="whatsapp-icon whatsapp-icon-small" />
+            Enquire now
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,86 @@
+---
+import site from "@/data/site.json";
+import SearchBar from "@/components/search/SearchBar.astro";
+---
+
+<header class="sticky top-0 z-50 bg-white border-b">
+  <div class="max-w-7xl mx-auto grid grid-cols-12 items-center gap-4 p-4">
+    <!-- Logo -->
+    <div class="col-span-4 md:col-span-3">
+      <a href="/"><img src={site.logo} alt={site.name} class="h-8" /></a>
+    </div>
+
+    <!-- Navigation (hidden on small screens) -->
+    <nav class="hidden md:flex col-span-6 justify-center gap-4 text-sm">
+      {
+        site.nav.map((item) => (
+          <a href={item.href} class="hover:text-black text-gray-600">
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Search / Hamburger -->
+    <div class="col-span-8 md:col-span-3 flex justify-end items-center gap-4">
+      <!-- Inline search on medium+ screens -->
+      <div class="hidden md:block">
+        <SearchBar />
+      </div>
+
+      <!-- Mobile hamburger menu -->
+      <button
+        class="md:hidden p-2 rounded hover:bg-gray-100"
+        aria-label="Open menu"
+        onclick="document.getElementById('mobile-menu')?.classList.toggle('hidden')"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!-- Mobile search icon -->
+      <button
+        class="md:hidden p-2 rounded hover:bg-gray-100"
+        aria-label="Open search"
+        onclick="document.getElementById('search-modal')?.classList.remove('hidden'); document.getElementById('search-input')?.focus();"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu (hidden by default) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <nav class="flex flex-col p-4 gap-2">
+      {
+        site.nav.map((item) => (
+          <a href={item.href} class="hover:text-black text-gray-600">
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://akcomms.co.za/sitemap.xml

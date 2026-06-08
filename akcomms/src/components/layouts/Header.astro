@@ -1,0 +1,65 @@
+---
+import site from "@/data/site.json";
+import Logo from "@/components/brand/Logo.astro";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon.astro";
+---
+
+<header class="site-header">
+  <div class="shell flex h-[76px] items-center justify-between gap-6">
+    <a href="#top" class="shrink-0 rounded-sm" aria-label="AK Comms home"><Logo /></a>
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+      {site.nav.map((item) => <a class="nav-link" href={item.href}>{item.label}</a>)}
+    </nav>
+    <div class="hidden items-center gap-3 lg:flex">
+      <a class="button button-small header-button gap-2" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+        Chat with us
+        <WhatsAppIcon class="whatsapp-icon" />
+      </a>
+    </div>
+    <button class="menu-button lg:hidden" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
+      <svg class="menu-open" width="25" height="25" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      <svg class="menu-close hidden" width="25" height="25" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="mobile-menu hidden lg:hidden" data-mobile-menu>
+    <nav class="shell flex flex-col py-3" aria-label="Mobile navigation">
+      {site.nav.map((item) => <a class="mobile-nav-link" href={item.href}>{item.label}</a>)}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>("[data-menu-button]");
+  const mobileMenu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+  const openIcon = menuButton?.querySelector<SVGElement>(".menu-open");
+  const closeIcon = menuButton?.querySelector<SVGElement>(".menu-close");
+
+  const closeMenu = () => {
+    mobileMenu?.classList.add("hidden");
+    openIcon?.classList.remove("hidden");
+    closeIcon?.classList.add("hidden");
+    menuButton?.setAttribute("aria-expanded", "false");
+    menuButton?.setAttribute("aria-label", "Open navigation");
+  };
+
+  menuButton?.addEventListener("click", () => {
+    if (menuButton.getAttribute("aria-expanded") === "true") {
+      closeMenu();
+      return;
+    }
+    mobileMenu?.classList.remove("hidden");
+    openIcon?.classList.add("hidden");
+    closeIcon?.classList.remove("hidden");
+    menuButton.setAttribute("aria-expanded", "true");
+    menuButton.setAttribute("aria-label", "Close navigation");
+  });
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
+      closeMenu();
+      menuButton.focus();
+    }
+  });
+</script>
