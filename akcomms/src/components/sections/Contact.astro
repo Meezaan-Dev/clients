@@ -1,0 +1,35 @@
+---
+import site from "@/data/site.json";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon.astro";
+---
+
+<section id="contact" class="contact-section">
+  <div class="shell contact-content">
+    <div data-reveal>
+      <p class="section-kicker section-kicker-light">Get in touch</p>
+      <h2>Ready to sort out your connectivity or security requirements?</h2>
+      <p>Tell AK Comms what you need installed, improved, moved or repaired. Contact us by WhatsApp, phone or email.</p>
+    </div>
+
+    <div class="contact-methods">
+      <a class="contact-method" href={site.whatsapp} target="_blank" rel="noopener noreferrer" data-reveal style="--reveal-delay: 80ms">
+        <WhatsAppIcon class="contact-method-icon" />
+        <span class="contact-method-label">WhatsApp</span>
+        <strong>Start a chat</strong>
+        <span class="contact-method-action">Send us your enquiry <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a class="contact-method" href={`tel:${site.phone}`} data-reveal style="--reveal-delay: 150ms">
+        <svg class="contact-method-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.5 4.6 5.1c-.7.4-1 1.2-.8 2 1.3 6.4 6.3 11.4 12.7 12.7.8.2 1.6-.1 2-.8l1.6-2.6a1.5 1.5 0 0 0-.4-2l-2.8-2.1a1.5 1.5 0 0 0-1.8 0l-1.6 1.2a13.2 13.2 0 0 1-3-3l1.2-1.6a1.5 1.5 0 0 0 0-1.8L9.2 3.9a1.5 1.5 0 0 0-2-.4Z" /></svg>
+        <span class="contact-method-label">Phone</span>
+        <strong>{site.phoneDisplay}</strong>
+        <span class="contact-method-action">Call AK Comms <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a class="contact-method" href={`mailto:${site.email}`} data-reveal style="--reveal-delay: 220ms">
+        <svg class="contact-method-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
+        <span class="contact-method-label">Email</span>
+        <strong>{site.email}</strong>
+        <span class="contact-method-action">Write to us <span aria-hidden="true">&rarr;</span></span>
+      </a>
+    </div>
+  </div>
+</section>

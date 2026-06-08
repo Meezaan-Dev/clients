@@ -1,0 +1,23 @@
+---
+import site from "@/data/site.json";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon.astro";
+---
+
+<section id="top" class="simple-hero">
+  <div class="shell hero-layout">
+    <div class="hero-content" data-reveal>
+      <p class="hero-kicker">Internet &amp; Communications Specialists</p>
+      <h1 class="hero-title">Poor connectivity and unreliable systems should not slow you down.</h1>
+      <p class="hero-copy">
+        Get practical help with Wi-Fi, fibre, CCTV, smart technology and network equipment for your home or business.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a class="button hero-button" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+          Enquire on WhatsApp
+          <WhatsAppIcon class="whatsapp-icon" />
+        </a>
+        <a class="button hero-call-button" href={`tel:${site.phone}`}>Call {site.phoneDisplay}</a>
+      </div>
+    </div>
+  </div>
+</section>

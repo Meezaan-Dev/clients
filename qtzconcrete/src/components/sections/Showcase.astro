@@ -1,0 +1,18 @@
+---
+import site from "@/data/site.json";
+import ProductCard from "@/components/product/ProductCard.astro";
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-2xl font-semibold mb-6">Featured Products</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        site.products
+          .slice(0, 3)
+          .map((product) => <ProductCard product={product} />)
+      }
+    </div>
+  </div>
+</section>

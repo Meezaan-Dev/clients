@@ -1,0 +1,81 @@
+{
+  "name": "AK Comms",
+  "legalName": "AK Comms",
+  "domain": "akcomms.co.za",
+  "url": "https://akcomms.co.za",
+  "phoneDisplay": "071 461 8796",
+  "phone": "+27714618796",
+  "email": "akcomms73@gmail.com",
+  "whatsapp": "https://wa.me/27714618796?text=Hello%20AK%20Comms%2C%20I%27d%20like%20to%20enquire%20about%20your%20services.",
+  "nav": [
+    { "label": "Home", "href": "#top" },
+    { "label": "What We Do", "href": "#what-we-do" },
+    { "label": "Services", "href": "#services" },
+    { "label": "How It Works", "href": "#how-it-works" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "hero": {
+    "eyebrow": "Internet & communications specialists",
+    "title": "Connected properly. Protected reliably.",
+    "subtitle": "Practical Wi-Fi, fibre, CCTV and smart technology solutions for homes and businesses."
+  },
+  "services": [
+    {
+      "key": "wifi",
+      "title": "Wi-Fi & LAN",
+      "description": "Install, extend and repair Wi-Fi networks, with professionally installed LAN points where you need them."
+    },
+    {
+      "key": "cctv",
+      "title": "CCTV Cameras",
+      "description": "Camera installations designed to give you a clearer view of the spaces that matter."
+    },
+    {
+      "key": "fibre",
+      "title": "Fibre Services",
+      "description": "Fibre installation, fault repair and careful relocation for dependable connectivity."
+    },
+    {
+      "key": "smart-home",
+      "title": "Smart Home Automation",
+      "description": "Connected home installations that make everyday control simpler and more convenient."
+    },
+    {
+      "key": "equipment",
+      "title": "Network Equipment",
+      "description": "Supply and installation of Ethernet switches, UPS units and related networking equipment."
+    }
+  ],
+  "benefits": [
+    {
+      "title": "One point of contact",
+      "description": "From the first enquiry through to the completed installation, communication stays simple."
+    },
+    {
+      "title": "Practical solutions",
+      "description": "Recommendations are shaped around the property, equipment and connection you already have."
+    },
+    {
+      "title": "Neat, considered work",
+      "description": "Every installation is approached with care for performance, placement and a tidy finish."
+    },
+    {
+      "title": "Support across systems",
+      "description": "Wi-Fi, fibre, CCTV, smart devices and network equipment can be handled together."
+    }
+  ],
+  "process": [
+    {
+      "title": "Discuss your requirements",
+      "description": "Tell us what is not working, what you want to improve, or what needs to be installed."
+    },
+    {
+      "title": "Plan the right solution",
+      "description": "We consider your property, connection and existing equipment before recommending a practical approach."
+    },
+    {
+      "title": "Install or repair",
+      "description": "The agreed work is completed with attention to reliable performance, sensible placement and a neat finish."
+    }
+  ]
+}

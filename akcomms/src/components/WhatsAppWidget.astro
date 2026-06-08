@@ -1,0 +1,80 @@
+---
+import site from "@/data/site.json";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon.astro";
+---
+
+<div class="whatsapp-widget" data-whatsapp-widget>
+  <div class="whatsapp-panel" id="whatsapp-panel" role="dialog" aria-labelledby="whatsapp-title" hidden data-whatsapp-panel>
+    <div class="whatsapp-panel-header">
+      <div class="whatsapp-panel-title">
+        <span class="whatsapp-brand-mark"><WhatsAppIcon class="whatsapp-icon" /></span>
+        <div>
+          <strong id="whatsapp-title">Chat with AK Comms</strong>
+          <span>Typically the quickest way to enquire</span>
+        </div>
+      </div>
+      <button type="button" aria-label="Close WhatsApp chat prompt" data-whatsapp-close>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+    <div class="whatsapp-panel-body">
+      <p>Hello. How can we help with your connectivity, security or smart technology requirements?</p>
+      <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+        <WhatsAppIcon class="whatsapp-icon" />
+        Start WhatsApp chat
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <button
+    class="whatsapp-trigger"
+    type="button"
+    aria-label="Open WhatsApp chat prompt"
+    aria-expanded="false"
+    aria-controls="whatsapp-panel"
+    data-whatsapp-trigger
+  >
+    <span>Chat with us</span>
+    <WhatsAppIcon class="whatsapp-icon whatsapp-trigger-icon" />
+  </button>
+</div>
+
+<script>
+  const widget = document.querySelector("[data-whatsapp-widget]");
+  const panel = widget?.querySelector("[data-whatsapp-panel]") as HTMLElement | null;
+  const trigger = widget?.querySelector("[data-whatsapp-trigger]") as HTMLButtonElement | null;
+  const closeButton = widget?.querySelector("[data-whatsapp-close]") as HTMLButtonElement | null;
+
+  const closePanel = (returnFocus = true) => {
+    if (!panel || !trigger) return;
+    panel.hidden = true;
+    trigger.setAttribute("aria-expanded", "false");
+    trigger.setAttribute("aria-label", "Open WhatsApp chat prompt");
+    if (returnFocus) trigger.focus();
+  };
+
+  const openPanel = () => {
+    if (!panel || !trigger) return;
+    panel.hidden = false;
+    trigger.setAttribute("aria-expanded", "true");
+    trigger.setAttribute("aria-label", "Hide WhatsApp chat prompt");
+    closeButton?.focus();
+  };
+
+  trigger?.addEventListener("click", () => {
+    if (panel?.hidden) openPanel();
+    else closePanel(false);
+  });
+
+  closeButton?.addEventListener("click", () => closePanel());
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && panel && !panel.hidden) closePanel();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (panel?.hidden || widget?.contains(event.target as Node)) return;
+    closePanel(false);
+  });
+</script>

@@ -1,0 +1,127 @@
+---
+import "@/styles/global.css";
+import Header from "@/components/layouts/Header.astro";
+import Footer from "@/components/layouts/Footer.astro";
+import WhatsAppWidget from "@/components/WhatsAppWidget.astro";
+import site from "@/data/site.json";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "AK Comms | Wi-Fi, Fibre, CCTV & Smart Home Services",
+  description = "AK Comms installs, extends and repairs Wi-Fi, LAN, fibre, CCTV, smart home systems and network equipment for homes and businesses."
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.url);
+const serviceOffers = site.services.map((service) => ({
+  "@type": "Offer",
+  itemOffered: {
+    "@type": "Service",
+    name: service.title,
+    description: service.description
+  }
+}));
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      description,
+      publisher: { "@id": `${site.url}/#business` }
+    },
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": `${site.url}/#business`,
+      name: site.name,
+      legalName: site.legalName,
+      url: site.url,
+      logo: `${site.url}/ak-comms-logo.png`,
+      image: `${site.url}/social-card.png`,
+      telephone: site.phone,
+      email: site.email,
+      description,
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: site.phone,
+        email: site.email,
+        contactType: "customer service",
+        availableLanguage: "English"
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Internet and communications services",
+        itemListElement: serviceOffers
+      }
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en-ZA">
+  <head>
+    <script is:inline>
+      document.documentElement.classList.add("motion-ready");
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#003060" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_ZA" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={`${site.url}/social-card.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AK Comms internet and communications services" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${site.url}/social-card.png`} />
+    <meta name="twitter:image:alt" content="AK Comms internet and communications services" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <main id="main-content"><slot /></main>
+    <Footer />
+    <WhatsAppWidget />
+    <script>
+      const revealItems = document.querySelectorAll("[data-reveal]");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      }
+    </script>
+  </body>
+</html>

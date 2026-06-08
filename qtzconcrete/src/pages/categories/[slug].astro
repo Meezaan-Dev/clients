@@ -1,0 +1,59 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import site from "@/data/site.json";
+import type { Product } from "@/types/product";
+import type { Category } from "@/types/category";
+
+export function getStaticPaths() {
+  return (site.categories as Category[]).map((cat) => ({
+    params: { slug: cat.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const filtered = (site.products as Product[]).filter((p) => p.category === slug);
+---
+
+<BaseLayout>
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <header class="mb-10">
+        <h1 class="text-4xl font-bold capitalize tracking-tight">
+          {slug.replace("-", " ")}
+        </h1>
+
+        <p class="mt-2 text-gray-600">Browse products in this category.</p>
+      </header>
+
+      {
+        filtered.length === 0 && (
+          <p class="text-gray-500">No products found in this category.</p>
+        )
+      }
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {
+          filtered.map((p) => (
+            <a
+              href={`/products/${p.slug}`}
+              class="group rounded-lg border p-4 hover:border-black transition"
+            >
+              <div class="h-40 bg-gray-100 rounded mb-4 flex items-center justify-center">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  class="max-h-32 object-contain"
+                />
+              </div>
+
+              <h3 class="font-semibold group-hover:underline">{p.name}</h3>
+
+              <p class="mt-1 text-sm text-gray-600">R {p.price}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,68 @@
+---
+import site from "@/data/site.json"
+import type { Product } from "@/types/product"
+---
+
+<div
+  id="search-modal"
+  class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-sm"
+>
+  <div class="mx-auto mt-32 max-w-lg rounded-lg bg-white p-6 shadow-lg">
+    <input
+      id="search-input"
+      type="search"
+      placeholder="Search products..."
+      class="w-full rounded border px-3 py-2 text-sm focus:outline-none focus:ring"
+    />
+
+    <ul id="search-results" class="mt-4 space-y-2">
+      {(site.products as Product[]).map(product => (
+        <li class="hidden">
+          <a
+            href={`/products/${product.slug}`}
+            class="block rounded px-3 py-2 text-sm hover:bg-gray-100"
+          >
+            {product.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <script>
+    const modal = document.getElementById("search-modal") as HTMLDivElement | null;
+    const input = document.getElementById("search-input") as HTMLInputElement | null;
+    const items = document.querySelectorAll("#search-results li");
+
+    if (modal && input) {
+      window.addEventListener("keydown", (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+          e.preventDefault();
+          modal.classList.remove("hidden");
+          input.focus();
+        }
+
+        if (e.key === "Escape") {
+          modal.classList.add("hidden");
+          input.value = "";
+        }
+      });
+
+      input.addEventListener("input", () => {
+        const value = input.value.toLowerCase();
+
+        items.forEach(item => {
+          const text = item.textContent?.toLowerCase() ?? "";
+          item.classList.toggle("hidden", !text.includes(value) || !value);
+        });
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.add("hidden");
+          input.value = "";
+        }
+      });
+    }
+  </script>
+</div>

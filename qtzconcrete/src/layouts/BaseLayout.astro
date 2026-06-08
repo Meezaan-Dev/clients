@@ -1,0 +1,29 @@
+---
+import "@/styles/global.css";
+import Header from "@/components/layouts/Header.astro";
+import Footer from "@/components/layouts/Footer.astro";
+import SearchModal from "@/components/search/SearchModal.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Components - Demo</title>
+  </head>
+
+  <body class="bg-white text-gray-900 antialiased relative">
+    <Header />
+
+    <!-- Slot for page content -->
+    <main class="min-h-screen">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!-- Global search modal -->
+    <SearchModal />
+  </body>
+</html>
