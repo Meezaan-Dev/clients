@@ -4,26 +4,52 @@ import Logo from "@/components/brand/Logo.astro";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon.astro";
 ---
 
-<header class="site-header">
-  <div class="shell flex h-[76px] items-center justify-between gap-6">
-    <a href="#top" class="shrink-0 rounded-sm" aria-label="AK Comms home"><Logo /></a>
+<header class="sticky top-0 z-50 border-b border-white/10 bg-linear-to-r from-brand-navy-deep to-brand-navy">
+  <div class="mx-auto flex h-[76px] w-[min(calc(100%_-_2.5rem),1140px)] items-center justify-between gap-6 sm:w-[min(calc(100%_-_3rem),900px)] lg:w-[min(calc(100%_-_3rem),1080px)] lg:gap-4 xl:w-[min(calc(100%_-_clamp(2rem,6vw,6rem)),1240px)] xl:gap-6 2xl:h-[84px] 2xl:w-[min(calc(100%_-_8rem),1320px)]">
+    <a href="#top" class="shrink-0 rounded-sm focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-brand-cyan" aria-label="AK Comms home"><Logo /></a>
     <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
-      {site.nav.map((item) => <a class="nav-link" href={item.href}>{item.label}</a>)}
+      {site.nav.map((item) => (
+        <a
+          class="text-[0.9rem] font-semibold text-white no-underline hover:text-[#aee8fb] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-brand-cyan xl:text-base"
+          href={item.href}
+        >
+          {item.label}
+        </a>
+      ))}
     </nav>
     <div class="hidden items-center gap-3 lg:flex">
-      <a class="button button-small header-button gap-2" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+      <a
+        class="inline-flex min-h-[42px] items-center justify-center gap-2 rounded-sm border border-transparent bg-brand-cyan px-4 py-[0.65rem] text-base leading-[1.2] font-bold text-white no-underline transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-brand-cyan-light focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-brand-cyan"
+        href={site.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Chat with us
-        <WhatsAppIcon class="whatsapp-icon" />
+        <WhatsAppIcon class="h-5 w-5 shrink-0" />
       </a>
     </div>
-    <button class="menu-button lg:hidden" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
+    <button
+      class="grid h-[42px] w-[42px] place-items-center rounded-sm border border-[#d8e1e8] bg-transparent text-white focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-brand-cyan lg:hidden"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      data-menu-button
+    >
       <svg class="menu-open" width="25" height="25" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
       <svg class="menu-close hidden" width="25" height="25" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
     </button>
   </div>
-  <div id="mobile-menu" class="mobile-menu hidden lg:hidden" data-mobile-menu>
-    <nav class="shell flex flex-col py-3" aria-label="Mobile navigation">
-      {site.nav.map((item) => <a class="mobile-nav-link" href={item.href}>{item.label}</a>)}
+  <div id="mobile-menu" class="hidden border-t border-white/10 bg-brand-navy lg:hidden" data-mobile-menu>
+    <nav class="mx-auto flex w-[min(calc(100%_-_2.5rem),1140px)] flex-col py-3 sm:w-[min(calc(100%_-_3rem),900px)]" aria-label="Mobile navigation">
+      {site.nav.map((item) => (
+        <a
+          class="border-b border-white/10 py-[0.85rem] font-semibold text-white no-underline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-brand-cyan"
+          href={item.href}
+        >
+          {item.label}
+        </a>
+      ))}
     </nav>
   </div>
 </header>
