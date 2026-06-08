@@ -64,7 +64,7 @@ const structuredData = {
 ---
 
 <!doctype html>
-<html lang="en-ZA">
+<html lang="en-ZA" class="scroll-smooth scroll-pt-[76px] motion-reduce:scroll-auto 2xl:scroll-pt-[84px]">
   <head>
     <script is:inline>
       document.documentElement.classList.add("motion-ready");
@@ -72,6 +72,9 @@ const structuredData = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#003060" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href={canonical} />
@@ -96,24 +99,29 @@ const structuredData = {
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+  <body class="m-0 min-w-80 overflow-x-hidden bg-white font-sans text-[clamp(16px,0.18vw+15.4px,18px)] leading-[1.6] text-brand-ink">
+    <a
+      class="fixed top-4 left-4 z-[100] -translate-y-[150%] bg-white px-4 py-3 font-bold text-brand-navy shadow-[0_2px_8px_rgb(0_0_0/15%)] focus:translate-y-0 focus:outline-3 focus:outline-offset-3 focus:outline-brand-cyan"
+      href="#main-content"
+    >
+      Skip to content
+    </a>
     <Header />
     <main id="main-content"><slot /></main>
     <Footer />
     <WhatsAppWidget />
     <script>
-      const revealItems = document.querySelectorAll("[data-reveal]");
+      const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (reduceMotion || !("IntersectionObserver" in window)) {
-        revealItems.forEach((item) => item.classList.add("is-visible"));
+        revealItems.forEach((item) => item.dataset.visible = "true");
       } else {
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (!entry.isIntersecting) return;
-              entry.target.classList.add("is-visible");
+              (entry.target as HTMLElement).dataset.visible = "true";
               observer.unobserve(entry.target);
             });
           },

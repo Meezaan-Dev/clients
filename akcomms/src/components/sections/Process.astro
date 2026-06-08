@@ -3,23 +3,25 @@ import site from "@/data/site.json";
 import type { ProcessStep } from "@/types/site";
 
 const steps = site.process as ProcessStep[];
+const revealClass = "transition-[opacity,transform] duration-[620ms] ease-[cubic-bezier(0.22,1,0.36,1)] [.motion-ready_&]:translate-y-[18px] [.motion-ready_&]:opacity-0 data-[visible=true]:!translate-y-0 data-[visible=true]:!opacity-100 motion-reduce:!translate-y-0 motion-reduce:!opacity-100 motion-reduce:!transition-none";
+const delays = ["delay-0", "delay-75", "delay-150"];
 ---
 
-<section id="how-it-works" class="process-section journey-section">
-  <div class="shell overview-layout">
-    <div data-reveal>
-      <p class="section-kicker"><span>03</span> How we do it</p>
-      <h2>A straightforward way to get the job done.</h2>
-      <p>Clear communication from the first enquiry through to installation or repair.</p>
+<section id="how-it-works" class="relative border-t border-brand-navy/10 bg-brand-mist py-[4.25rem] sm:py-[4.5rem] xl:py-20">
+  <div class="mx-auto grid w-[min(calc(100%_-_2.5rem),1140px)] grid-cols-1 items-start gap-8 sm:w-[min(calc(100%_-_3rem),900px)] lg:w-[min(calc(100%_-_3rem),1080px)] lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-14 xl:w-[min(calc(100%_-_clamp(2rem,6vw,6rem)),1240px)] 2xl:w-[min(calc(100%_-_8rem),1320px)]">
+    <div class={revealClass} data-reveal>
+      <p class="m-0 mb-3 text-sm font-bold tracking-[0.06em] text-brand-cyan-dark uppercase"><span class="mr-2 text-brand-navy tabular-nums">03</span> How we do it</p>
+      <h2 class="m-0 text-[1.9rem] leading-[1.22] font-bold tracking-[-0.03em] text-brand-navy sm:text-[clamp(2.15rem,3.1vw,2.85rem)] sm:leading-[1.17]">A straightforward way to get the job done.</h2>
+      <p class="mt-4 max-w-[520px] text-base leading-[1.7] text-brand-copy sm:text-[1.06rem] sm:leading-[1.75]">Clear communication from the first enquiry through to installation or repair.</p>
     </div>
 
-    <ol class="process-list">
+    <ol class="m-0 grid list-none p-0">
       {steps.map((step, index) => (
-        <li class="process-step" data-reveal style={`--reveal-delay: ${index * 80}ms`}>
-          <span class="process-number">0{index + 1}</span>
+        <li class:list={["grid grid-cols-[54px_minmax(0,1fr)] gap-5 border-t border-brand-navy/15 py-6 first:border-t-0 first:pt-0", revealClass, delays[index]]} data-reveal>
+          <span class="text-[0.95rem] font-bold text-brand-cyan-dark">0{index + 1}</span>
           <div>
-            <h3>{step.title}</h3>
-            <p>{step.description}</p>
+            <h3 class="mt-0 mb-2 text-[1.18rem] leading-[1.3] font-bold text-brand-navy sm:text-[1.28rem]">{step.title}</h3>
+            <p class="m-0 text-[0.96rem] leading-[1.7] text-brand-copy sm:text-base sm:leading-[1.75]">{step.description}</p>
           </div>
         </li>
       ))}
