@@ -1,0 +1,57 @@
+---
+const navItems = [
+  { href: "/", label: "Home", match: (path: string) => path === "/" },
+  { href: "/work/", label: "Work", match: (path: string) => path.startsWith("/work") },
+  { href: "/about/", label: "About", match: (path: string) => path.startsWith("/about") },
+  { href: "/contact/", label: "Contact", match: (path: string) => path.startsWith("/contact") },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-ink/10 bg-paper/95 backdrop-blur-sm">
+  <div class="page-shell flex min-h-20 items-center justify-between gap-4 sm:min-h-24 sm:gap-6">
+    <a href="/" class="group border-2 border-ink px-3 py-2 sm:px-4">
+      <span class="block font-display text-xl font-bold leading-none tracking-wide sm:text-2xl">Anele Pama</span>
+      <span class="mt-1 block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-ink/55 group-hover:text-rust sm:text-xs">
+        Aceart Graphics
+      </span>
+    </a>
+    <nav aria-label="Primary navigation" class="hidden items-center gap-8 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            class:list={[
+              "text-sm font-semibold transition hover:text-rust",
+              item.match(currentPath) ? "text-rust" : "text-ink",
+            ]}
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a href="/contact/" class="button-primary hidden md:inline-flex">Enquire</a>
+    <details class="relative md:hidden">
+      <summary class="cursor-pointer list-none text-sm font-semibold text-ink [&::-webkit-details-marker]:hidden">
+        Menu
+      </summary>
+      <div class="absolute right-0 top-full z-50 mt-3 min-w-[11rem] border border-ink/10 bg-paper py-2 shadow-gallery">
+        {
+          navItems.map((item) => (
+            <a
+              class:list={[
+                "block px-4 py-2.5 text-sm font-semibold transition hover:bg-bone hover:text-rust",
+                item.match(currentPath) ? "text-rust" : "text-ink",
+              ]}
+              href={item.href}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <a class="button-primary mx-3 mt-2 w-[calc(100%-1.5rem)]" href="/contact/">Enquire</a>
+      </div>
+    </details>
+  </div>
+</header>

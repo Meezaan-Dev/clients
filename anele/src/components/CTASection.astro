@@ -1,0 +1,24 @@
+---
+interface Props {
+  title?: string;
+  text?: string;
+  href?: string;
+  label?: string;
+}
+
+const {
+  title = "Commissions, collaborations, and enquiries",
+  text = "Email or call to discuss artwork, design projects, or a new collaboration.",
+  href = "/contact/",
+  label = "Start an Enquiry",
+} = Astro.props;
+---
+
+<section class="page-shell reveal-section">
+  <div class="border-y border-ink/10 py-16 text-center sm:py-20">
+    <p class="eyebrow">Contact</p>
+    <h2 class="section-heading mx-auto mt-4 max-w-4xl">{title}</h2>
+    <p class="body-copy mx-auto mt-6 max-w-2xl">{text}</p>
+    <a class="button-primary mt-8" href={href}>{label}</a>
+  </div>
+</section>

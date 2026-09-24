@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-rust text-white;
+  }
+
+  a,
+  button {
+    @apply outline-offset-4;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline outline-2 outline-rust;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-rust;
+  }
+
+  .display-heading {
+    @apply font-display text-5xl font-semibold leading-[0.95] text-ink sm:text-6xl lg:text-8xl;
+  }
+
+  .section-heading {
+    @apply font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl lg:text-6xl;
+  }
+
+  .body-copy {
+    @apply text-base leading-8 text-ink/75 sm:text-lg;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center bg-rust px-6 py-3 text-sm font-semibold text-white transition hover:bg-ink;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center border border-ink/20 px-6 py-3 text-sm font-semibold text-ink transition hover:border-rust hover:bg-rust hover:text-white;
+  }
+
+  .filter-chip {
+    @apply border border-ink/15 px-4 py-2 text-sm font-semibold text-ink/70 transition hover:border-rust hover:text-rust;
+  }
+
+  .filter-chip-active {
+    @apply border-rust bg-rust text-white hover:border-rust hover:text-white;
+  }
+
+  .reveal-section {
+    animation: reveal-rise 0.7s ease-out both;
+  }
+
+  @keyframes reveal-rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

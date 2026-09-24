@@ -1,0 +1,43 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Anele Pama for artwork, commissions, collaborations, and design enquiries."
+>
+  <section class="page-shell reveal-section py-16 sm:py-24">
+    <p class="eyebrow">Contact</p>
+    <div class="mt-5 grid gap-10 lg:grid-cols-[0.85fr_1fr] lg:items-end">
+      <h1 class="display-heading">Enquiries and collaborations</h1>
+      <p class="body-copy">
+        For commissions, design projects, collaborations, or questions about available work, reach out by email or
+        phone. Based in Cape Town, working with clients locally and remotely.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-shell pb-20">
+    <div class="grid gap-6 md:grid-cols-3">
+      <a class="border-y border-ink/10 py-10 transition hover:border-rust" href="mailto:pamaanele7@gmail.com">
+        <p class="eyebrow">Email</p>
+        <h2 class="mt-4 break-words font-display text-3xl font-semibold sm:text-4xl">pamaanele7@gmail.com</h2>
+        <p class="mt-4 text-sm leading-7 text-ink/65">Best for project briefs, commissions, and general enquiries.</p>
+      </a>
+      <a class="border-y border-ink/10 py-10 transition hover:border-rust" href="tel:+27646462405">
+        <p class="eyebrow">Phone</p>
+        <h2 class="mt-4 font-display text-4xl font-semibold">064 646 2405</h2>
+        <p class="mt-4 text-sm leading-7 text-ink/65">Call or WhatsApp during reasonable hours.</p>
+      </a>
+      <div class="border-y border-ink/10 py-10">
+        <p class="eyebrow">Location</p>
+        <h2 class="mt-4 font-display text-4xl font-semibold">Cape Town</h2>
+        <p class="mt-4 text-sm leading-7 text-ink/65">Western Cape, South Africa. In-person meetings by arrangement.</p>
+      </div>
+    </div>
+    <p class="body-copy mt-12 max-w-2xl text-sm text-ink/60">
+      Instagram and other social links can be added here when confirmed. This site stays static and form-free so it
+      deploys easily to shared hosting.
+    </p>
+  </section>
+</BaseLayout>

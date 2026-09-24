@@ -1,0 +1,58 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import CTASection from "@components/CTASection.astro";
+---
+
+<BaseLayout title="About" description="About Anele Pama, artist and graphic designer in Cape Town.">
+  <section class="page-shell reveal-section py-16 sm:py-24">
+    <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
+      <figure class="bg-bone shadow-gallery">
+        <img
+          src="/images/work/quiet-forms.svg"
+          alt="Sample artwork from Anele Pama's portfolio."
+          width="1200"
+          height="1500"
+          class="aspect-[4/5] w-full object-cover"
+        />
+      </figure>
+      <div>
+        <p class="eyebrow">About</p>
+        <h1 class="display-heading mt-4">Anele Pama</h1>
+        <p class="body-copy mt-8">
+          Anele Pama is a Cape Town–based artist and graphic designer working under Aceart Graphics. He holds a diploma in
+          Visual Communication from the Cape Peninsula University of Technology and works across illustration,
+          typography, layout design, painting, and photography.
+        </p>
+        <p class="body-copy mt-5">
+          His practice spans personal artwork and commercial design — from brand identity and editorial layout to
+          campaign visuals and mixed-media studies — with a consistent focus on craft, clarity, and visual impact.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-shell reveal-section py-12 sm:py-20">
+    <div class="grid gap-10 md:grid-cols-2">
+      <div class="border-t border-ink/10 pt-8">
+        <p class="eyebrow">Artist Statement</p>
+        <h2 class="mt-4 font-display text-4xl font-semibold">Personal work</h2>
+        <p class="body-copy mt-5">
+          Painting, drawing, and mixed-media studies sit at the heart of Anele's personal practice. These pieces explore
+          form, colour, and composition with the same attention to detail that shapes his design work — quiet when it
+          needs to be, bold when the idea calls for it.
+        </p>
+      </div>
+      <div class="border-t border-ink/10 pt-8">
+        <p class="eyebrow">Design Practice</p>
+        <h2 class="mt-4 font-display text-4xl font-semibold">Aceart Graphics</h2>
+        <p class="body-copy mt-5">
+          Through Aceart Graphics, Anele takes on branding, social and print campaigns, newsletters, typography-led
+          layouts, illustration, and mockups. He works with clients and collaborators who need visuals that feel
+          considered, distinctive, and built to last.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

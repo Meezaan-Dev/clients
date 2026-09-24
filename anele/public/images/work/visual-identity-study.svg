@@ -1,0 +1,15 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Visual Identity Study placeholder</title>
+  <desc id="desc">Graphic design placeholder with identity panels and typographic layout.</desc>
+  <rect width="1200" height="1500" fill="#FBFAF7"/>
+  <rect x="112" y="120" width="976" height="1260" fill="#F1EEE8"/>
+  <rect x="198" y="220" width="360" height="520" fill="#10131B"/>
+  <rect x="642" y="220" width="360" height="520" fill="#0EA5C6"/>
+  <rect x="198" y="810" width="804" height="96" fill="#A4492F"/>
+  <rect x="198" y="960" width="292" height="312" fill="#FBFAF7"/>
+  <rect x="528" y="960" width="474" height="64" fill="#10131B"/>
+  <rect x="528" y="1074" width="346" height="48" fill="#10131B" opacity=".68"/>
+  <rect x="528" y="1166" width="420" height="48" fill="#10131B" opacity=".28"/>
+  <circle cx="378" cy="480" r="126" fill="#FBFAF7"/>
+  <path d="M690 624L825 338L960 624H690Z" fill="#FBFAF7"/>
+</svg>

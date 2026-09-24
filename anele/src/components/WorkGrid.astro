@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import WorkCard from "@components/WorkCard.astro";
+
+interface Props {
+  items: CollectionEntry<"work">[];
+  filterable?: boolean;
+}
+
+const { items, filterable = false } = Astro.props;
+---
+
+<div class="grid gap-x-7 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-work-grid={filterable ? "" : undefined}>
+  {
+    items.map((item, index) => (
+      <div
+        class:list={[index % 3 === 1 && "lg:pt-16", index % 3 === 2 && "lg:pt-8"]}
+        data-work-category={filterable ? item.data.category : undefined}
+      >
+        <WorkCard item={item} priority={index < 2} />
+      </div>
+    ))
+  }
+</div>

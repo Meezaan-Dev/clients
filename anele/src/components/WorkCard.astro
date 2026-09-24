@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  item: CollectionEntry<"work">;
+  priority?: boolean;
+}
+
+const { item, priority = false } = Astro.props;
+const { title, category, cover, coverAlt, year, disciplineLabel } = item.data;
+const categoryLabel = disciplineLabel ?? (category === "art" ? "Art" : "Graphic Design");
+---
+
+<a href={`/work/${item.id}/`} class="group block">
+  <figure class="overflow-hidden border border-transparent bg-bone transition duration-300 group-hover:border-rust/40">
+    <img
+      src={cover}
+      alt={coverAlt}
+      width="1200"
+      height="1500"
+      loading={priority ? "eager" : "lazy"}
+      class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+    />
+  </figure>
+  <div class="mt-5 flex items-start justify-between gap-4 border-t border-transparent pt-1 transition group-hover:border-rust/30">
+    <div>
+      <p class="eyebrow">{categoryLabel}</p>
+      <h3 class="mt-2 font-display text-3xl font-semibold leading-tight transition group-hover:text-rust">{title}</h3>
+    </div>
+    {year && <p class="pt-2 text-sm font-semibold text-ink/45">{year}</p>}
+  </div>
+</a>

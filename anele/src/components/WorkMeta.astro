@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  item: CollectionEntry<"work">;
+}
+
+const { item } = Astro.props;
+const {
+  year,
+  category,
+  medium,
+  dimensions,
+  client,
+  availability,
+  price,
+  externalUrl,
+} = item.data;
+
+const rows = [
+  ["Year", year],
+  ["Category", category === "art" ? "Art" : "Graphic Design"],
+  ["Medium", medium],
+  ["Dimensions", dimensions],
+  ["Client", client],
+  ["Availability", availability?.replaceAll("-", " ")],
+  ["Price", price],
+].filter(([, value]) => Boolean(value));
+---
+
+<dl class="divide-y divide-ink/10 border-y border-ink/10">
+  {
+    rows.map(([label, value]) => (
+      <div class="grid grid-cols-[8rem_1fr] gap-4 py-4">
+        <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-ink/45">{label}</dt>
+        <dd class="capitalize text-sm font-semibold text-ink">{value}</dd>
+      </div>
+    ))
+  }
+</dl>
+{
+  externalUrl && (
+    <a class="button-secondary mt-6" href={externalUrl} rel="noreferrer" target="_blank">
+      View External Project
+    </a>
+  )
+}

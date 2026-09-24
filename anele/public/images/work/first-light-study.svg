@@ -1,0 +1,11 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">First Light Study placeholder</title>
+  <desc id="desc">Abstract placeholder artwork with layered colour fields.</desc>
+  <rect width="1200" height="1500" fill="#F3EFE7"/>
+  <rect x="126" y="140" width="844" height="1138" fill="#10131B"/>
+  <path d="M178 1152C296 900 412 752 616 644C808 542 900 372 978 194V1280H178V1152Z" fill="#0EA5C6"/>
+  <path d="M126 436C316 338 478 304 644 352C782 392 884 368 970 288V1068C850 964 720 930 548 978C374 1028 236 1004 126 904V436Z" fill="#A4492F"/>
+  <path d="M256 250H622V1186H256V250Z" fill="#F1EEE8" opacity=".82"/>
+  <path d="M320 360C432 292 548 318 664 438C780 558 880 594 964 546" stroke="#10131B" stroke-width="26" stroke-linecap="round"/>
+  <path d="M292 972C426 900 548 904 658 984C772 1068 880 1082 982 1014" stroke="#FBFAF7" stroke-width="22" stroke-linecap="round"/>
+</svg>

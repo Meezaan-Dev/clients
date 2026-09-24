@@ -1,0 +1,9 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Quiet Forms placeholder</title>
+  <desc id="desc">Monochrome placeholder artwork with line-based organic forms.</desc>
+  <rect width="1200" height="1500" fill="#F8F6F0"/>
+  <rect x="150" y="150" width="900" height="1200" stroke="#10131B" stroke-width="5"/>
+  <path d="M302 1030C250 824 300 636 452 466C564 340 724 312 846 394C968 476 934 650 776 732C618 814 584 922 674 1056C738 1152 658 1242 526 1216C418 1194 330 1138 302 1030Z" stroke="#10131B" stroke-width="18"/>
+  <path d="M370 978C478 928 558 844 610 726C678 570 762 492 862 492" stroke="#0EA5C6" stroke-width="12" stroke-linecap="round"/>
+  <path d="M436 446C510 552 590 614 676 632C744 646 804 676 856 722" stroke="#A4492F" stroke-width="12" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import WorkGrid from "@components/WorkGrid.astro";
+
+const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Work"
+  description="Selected artwork and graphic design projects by Anele Pama."
+>
+  <section class="page-shell reveal-section py-16 sm:py-24">
+    <p class="eyebrow">Portfolio</p>
+    <div class="mt-5 grid gap-8 lg:grid-cols-[0.8fr_1fr] lg:items-end">
+      <h1 class="display-heading">Selected Work</h1>
+      <p class="body-copy">
+        A mix of personal artwork and graphic design — branding, editorial layout, illustration, and painting. Filter by
+        category or open any piece for more detail.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-shell scroll-mt-12 pb-20" id="work">
+    <div class="mb-10 flex flex-wrap gap-3" role="group" aria-label="Filter work by category">
+      <button type="button" class="filter-chip filter-chip-active" data-work-filter="all">All</button>
+      <button type="button" class="filter-chip" data-work-filter="art">Art</button>
+      <button type="button" class="filter-chip" data-work-filter="graphic-design">Graphic Design</button>
+    </div>
+    <WorkGrid items={work} filterable />
+    <p class="body-copy mt-10 hidden text-center text-ink/60" data-work-empty>
+      No projects in this category yet. Check back as the portfolio grows.
+    </p>
+  </section>
+
+  <script>
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>("[data-work-filter]");
+    const items = document.querySelectorAll<HTMLElement>("[data-work-category]");
+    const emptyState = document.querySelector<HTMLElement>("[data-work-empty]");
+
+    function setActiveFilter(filter: string) {
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.workFilter === filter;
+        button.classList.toggle("filter-chip-active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+
+      let visibleCount = 0;
+      items.forEach((item) => {
+        const category = item.dataset.workCategory ?? "";
+        const show = filter === "all" || category === filter;
+        item.classList.toggle("hidden", !show);
+        if (show) visibleCount += 1;
+      });
+
+      emptyState?.classList.toggle("hidden", visibleCount > 0);
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.workFilter ?? "all";
+        setActiveFilter(filter);
+        if (filter === "all") {
+          history.replaceState(null, "", "#work");
+        } else {
+          history.replaceState(null, "", `#${filter}`);
+        }
+      });
+    });
+
+    const hash = window.location.hash.replace("#", "");
+    if (hash === "art" || hash === "graphic-design") {
+      setActiveFilter(hash);
+    } else {
+      setActiveFilter("all");
+    }
+  </script>
+</BaseLayout>

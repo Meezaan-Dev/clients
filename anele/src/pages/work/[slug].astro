@@ -1,0 +1,66 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import WorkMeta from "@components/WorkMeta.astro";
+import CTASection from "@components/CTASection.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("work");
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+---
+
+<BaseLayout title={data.title} description={data.description ?? `${data.title} by Anele Pama.`} image={data.cover}>
+  <article class="page-shell reveal-section py-16 sm:py-24">
+    <a href="/work/" class="text-sm font-semibold text-ink/55 transition hover:text-rust">Back to work</a>
+    <div class="mt-10 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+      <figure class="bg-bone shadow-gallery">
+        <img src={data.cover} alt={data.coverAlt} width="1200" height="1500" class="w-full object-cover" />
+      </figure>
+      <div class="lg:sticky lg:top-8 lg:self-start">
+        <p class="eyebrow">{data.category === "art" ? "Artwork" : "Design Project"}</p>
+        <h1 class="section-heading mt-4">{data.title}</h1>
+        {data.description && <p class="body-copy mt-6">{data.description}</p>}
+        <div class="mt-8">
+          <WorkMeta item={entry} />
+        </div>
+        {
+          data.availability === "available" && (
+            <a
+              class="button-primary mt-8"
+              href={`mailto:pamaanele7@gmail.com?subject=Enquiry about ${encodeURIComponent(data.title)}`}
+            >
+              Enquire About This Piece
+            </a>
+          )
+        }
+      </div>
+    </div>
+    <div class="body-copy mt-16 max-w-3xl space-y-6">
+      <Content />
+    </div>
+    {
+      data.images.length > 1 && (
+        <div class="mt-16 grid gap-6 sm:grid-cols-2">
+          {data.images.slice(1).map((image) => (
+            <figure class="bg-bone">
+              <img src={image.src} alt={image.alt} width="1200" height="1500" class="w-full object-cover" loading="lazy" />
+              {image.caption && <figcaption class="px-4 py-3 text-sm text-ink/60">{image.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )
+    }
+  </article>
+  <CTASection
+    title="Interested in this work?"
+    text="Email or call to enquire about this piece, commissions, or related design work."
+  />
+</BaseLayout>

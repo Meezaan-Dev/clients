@@ -1,0 +1,30 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+}
+
+const {
+  title = "Anele Pama — Artist & Graphic Designer",
+  description = "Portfolio website for Anele Pama, an artist and graphic designer creating artwork and visual design.",
+  image = "/images/site/og-placeholder.svg",
+  canonical = Astro.url.pathname,
+} = Astro.props;
+
+const siteUrl = "https://anelepama.com";
+const pageTitle = title.includes("Anele Pama") ? title : `${title} — Anele Pama`;
+const canonicalUrl = new URL(canonical, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:url" content={canonicalUrl} />
+<meta name="twitter:card" content="summary_large_image" />
