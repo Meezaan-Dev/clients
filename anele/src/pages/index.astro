@@ -14,26 +14,12 @@ const heroPiece = featured[0];
   title="Anele Pama — Artist & Graphic Designer"
   description="Portfolio of Anele Pama — artist and graphic designer in Cape Town. Art, branding, illustration, layout, and visual design through Aceart Graphics."
 >
-  <section class="page-shell reveal-section py-16 sm:py-24">
-    <div class="relative grid items-center gap-12 overflow-hidden lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-      <HeroMotif class="absolute -right-8 top-8 hidden w-72 opacity-40 lg:block xl:w-96" />
-      <div class="relative z-10">
-        <p class="eyebrow">Aceart Graphics</p>
-        <h1 class="display-heading mt-4">Anele Pama</h1>
-        <p class="mt-4 text-lg font-semibold text-ink/80 sm:text-xl">Artist &amp; Graphic Designer, Cape Town</p>
-        <p class="body-copy mt-6 max-w-xl">
-          Based in Cape Town, Anele works across illustration, typography, layout design, painting, and photography.
-          With a diploma in Visual Communication from CPUT, he brings a detail-led approach to both personal artwork and
-          client-facing design.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a href="/work/" class="button-primary">View Selected Work</a>
-          <a href="/about/" class="button-secondary">About Anele</a>
-        </div>
-      </div>
+  <section class="page-shell reveal-section py-12 sm:py-24">
+    <div class="relative grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+      <HeroMotif class="pointer-events-none absolute -right-4 top-0 w-40 opacity-35 sm:w-52 lg:-right-8 lg:top-8 lg:w-72 lg:opacity-40 xl:w-96" />
       {
         heroPiece && (
-          <figure class="relative z-10 bg-bone shadow-gallery">
+          <figure class="relative z-10 order-first bg-bone shadow-gallery lg:order-last">
             <img
               src={heroPiece.data.cover}
               alt={heroPiece.data.coverAlt}
@@ -44,6 +30,20 @@ const heroPiece = featured[0];
           </figure>
         )
       }
+      <div class="relative z-10 lg:order-first">
+        <p class="eyebrow">Aceart Graphics</p>
+        <h1 class="display-heading mt-4">Anele Pama</h1>
+        <p class="mt-4 text-base font-semibold text-ink/80 sm:text-xl">Artist &amp; Graphic Designer, Cape Town</p>
+        <p class="body-copy mt-6 max-w-xl">
+          Based in Cape Town, Anele works across illustration, typography, layout design, painting, and photography.
+          With a diploma in Visual Communication from CPUT, he brings a detail-led approach to both personal artwork and
+          client-facing design.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+          <a href="/work/" class="button-primary w-full justify-center sm:w-auto">View Selected Work</a>
+          <a href="/about/" class="button-secondary w-full justify-center sm:w-auto">About Anele</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -60,26 +60,28 @@ const heroPiece = featured[0];
 
   <section class="page-shell reveal-section py-12 sm:py-20">
     <div class="grid gap-6 md:grid-cols-3">
-      <a href="/work/#art" class="border-y border-ink/10 py-10 transition hover:border-rust">
+      <a href="/work/#art" class="border-y border-ink/10 py-8 transition hover:border-rust active:border-rust sm:py-10">
         <p class="eyebrow">01</p>
-        <h3 class="mt-4 font-display text-4xl font-semibold">Art</h3>
+        <h3 class="mt-4 font-display text-3xl font-semibold sm:text-4xl">Art</h3>
         <p class="mt-4 text-sm leading-7 text-ink/65">Painting, drawing, mixed media, and personal visual studies.</p>
       </a>
-      <a href="/work/#graphic-design" class="border-y border-ink/10 py-10 transition hover:border-rust">
+      <a href="/work/#graphic-design" class="border-y border-ink/10 py-8 transition hover:border-rust active:border-rust sm:py-10">
         <p class="eyebrow">02</p>
-        <h3 class="mt-4 font-display text-4xl font-semibold">Graphic Design</h3>
+        <h3 class="mt-4 font-display text-3xl font-semibold sm:text-4xl">Graphic Design</h3>
         <p class="mt-4 text-sm leading-7 text-ink/65">Branding, editorial layouts, posters, flyers, and visual systems.</p>
       </a>
-      <a href="/contact/" class="border-y border-ink/10 py-10 transition hover:border-rust">
+      <a href="/contact/" class="border-y border-ink/10 py-8 transition hover:border-rust active:border-rust sm:py-10">
         <p class="eyebrow">03</p>
-        <h3 class="mt-4 font-display text-4xl font-semibold">Enquiries</h3>
+        <h3 class="mt-4 font-display text-3xl font-semibold sm:text-4xl">Enquiries</h3>
         <p class="mt-4 text-sm leading-7 text-ink/65">Commissions, collaborations, and design projects.</p>
       </a>
     </div>
   </section>
 
   <section class="page-shell reveal-section py-12 sm:py-20">
-    <blockquote class="mx-auto max-w-4xl text-center font-display text-4xl font-semibold leading-tight text-ink/55 sm:text-5xl">
+    <blockquote
+      class="mx-auto max-w-4xl text-center font-display text-2xl font-semibold leading-snug text-ink/55 sm:text-3xl sm:leading-tight lg:text-4xl"
+    >
       "Whether crafting visuals for brands, bringing ideas to life through illustration, or capturing a moment through
       photography, the work is driven by creativity, detail, and a pursuit of excellence."
     </blockquote>

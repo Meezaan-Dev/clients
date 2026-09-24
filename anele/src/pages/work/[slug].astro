@@ -22,7 +22,7 @@ const data = entry.data;
     <a href="/work/" class="text-sm font-semibold text-ink/55 transition hover:text-rust">Back to work</a>
     <div class="mt-10 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
       <figure class="bg-bone shadow-gallery">
-        <img src={data.cover} alt={data.coverAlt} width="1200" height="1500" class="w-full object-cover" />
+        <img src={data.cover} alt={data.coverAlt} width="1200" height="1500" class="aspect-[4/5] w-full object-cover" />
       </figure>
       <div class="lg:sticky lg:top-8 lg:self-start">
         <p class="eyebrow">{data.category === "art" ? "Artwork" : "Design Project"}</p>

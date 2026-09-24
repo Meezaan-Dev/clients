@@ -57,31 +57,37 @@
   }
 
   .display-heading {
-    @apply font-display text-5xl font-semibold leading-[0.95] text-ink sm:text-6xl lg:text-8xl;
+    @apply font-display font-semibold leading-[0.95] text-ink;
+    font-size: clamp(2.5rem, 9vw, 6rem);
   }
 
   .section-heading {
-    @apply font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl lg:text-6xl;
+    @apply font-display font-semibold leading-tight text-ink;
+    font-size: clamp(2rem, 6vw, 3.75rem);
   }
 
   .body-copy {
-    @apply text-base leading-8 text-ink/75 sm:text-lg;
+    @apply text-base leading-7 text-ink/75 sm:text-lg sm:leading-8;
   }
 
   .button-primary {
-    @apply inline-flex items-center justify-center bg-rust px-6 py-3 text-sm font-semibold text-white transition hover:bg-ink;
+    @apply inline-flex min-h-[44px] items-center justify-center bg-rust px-6 py-3 text-sm font-semibold text-white transition hover:bg-ink active:bg-ink;
   }
 
   .button-secondary {
-    @apply inline-flex items-center justify-center border border-ink/20 px-6 py-3 text-sm font-semibold text-ink transition hover:border-rust hover:bg-rust hover:text-white;
+    @apply inline-flex min-h-[44px] items-center justify-center border border-ink/20 px-6 py-3 text-sm font-semibold text-ink transition hover:border-rust hover:bg-rust hover:text-white active:border-rust active:bg-rust active:text-white;
   }
 
   .filter-chip {
-    @apply border border-ink/15 px-4 py-2 text-sm font-semibold text-ink/70 transition hover:border-rust hover:text-rust;
+    @apply inline-flex min-h-[44px] items-center justify-center border border-ink/15 px-4 py-2 text-sm font-semibold text-ink/70 transition hover:border-rust hover:text-rust active:border-rust active:text-rust;
   }
 
   .filter-chip-active {
-    @apply border-rust bg-rust text-white hover:border-rust hover:text-white;
+    @apply border-rust bg-rust text-white hover:border-rust hover:text-white active:border-rust active:text-white;
+  }
+
+  .contact-email {
+    font-size: clamp(1.25rem, 5vw, 2.25rem);
   }
 
   .reveal-section {
