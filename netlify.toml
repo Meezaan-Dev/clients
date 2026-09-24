@@ -1,0 +1,9 @@
+# anele-portfolio and other sites without a UI base directory build from here.
+# For akcomms / qtzconcrete, set Base directory in Netlify site settings to that project folder.
+[build]
+  base = "anele"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
